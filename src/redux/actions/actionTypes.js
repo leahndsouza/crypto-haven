@@ -1,0 +1,1 @@
+export const SET_CRYPTO_STATS = 'SET_CRYPTO_STATS';

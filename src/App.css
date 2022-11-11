@@ -66,6 +66,17 @@
     
 }
 
+.show-more{
+    margin-top: 0px !important;
+}
+
+.home-heading-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
 @media screen and (max-width:1300px){
     .main{
         margin-left: 50px;
