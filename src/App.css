@@ -77,6 +77,17 @@
     margin-top: 40px;
 }
 
+.crypto-card-container{
+    min-height: 65vh !important;
+}
+
+.crypto-card{
+    min-width: 250px;
+}
+.crypto-card .crypto-image{
+    width:35px;
+}
+
 @media screen and (max-width:1300px){
     .main{
         margin-left: 50px;
