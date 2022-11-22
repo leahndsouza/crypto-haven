@@ -1,4 +1,4 @@
-import axios from "../axios";
+import { firstInstance } from "../axios";
 
 export function getStats(count) {
     let url = count ? `/coins?limit=${count}`: '/coins';
@@ -8,5 +8,6 @@ export function getStats(count) {
             'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
         }
     };
-    return axios.get(url,headers);
+    return firstInstance.get(url,headers);
 }
+

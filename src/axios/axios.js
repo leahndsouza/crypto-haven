@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-const instance = axios.create({
+const firstInstance = axios.create({
     baseURL: 'https://coinranking1.p.rapidapi.com',
 });
 
-export default instance;
+const secondInstance = axios.create({
+    baseURL: 'https://bing-news-search1.p.rapidapi.com'
+});
+
+export { firstInstance, secondInstance };

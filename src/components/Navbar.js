@@ -17,7 +17,7 @@ const Navbar = () => {
     <div className="nav-container">
       <div className="logo-container">
         <Avatar src={icon} size="large" className="logo" />
-        <Typography.Title level={2} style={{marginLeft: '10px'}}>
+        <Typography.Title level={2} style={{marginLeft: '10px', paddingTop: '10px'}}>
           <NavLink to="/">CryptoHaven</NavLink>
         </Typography.Title>
       </div>
