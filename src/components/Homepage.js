@@ -15,7 +15,6 @@ const Homepage = () => {
   useEffect(() => {
     getStats()
     .then((res) => {
-      console.log(res.data);
       setData(res.data.data.stats);
     })
     .catch((error) => {
@@ -39,7 +38,7 @@ const Homepage = () => {
       </div>
       <Cryptocurrencies simplified={true} />
       <div className='home-heading-container'>
-        <Title level={2} className='home-title'>Top Crypto News</Title>
+        <Title level={2} className='home-title'>Latest Crypto News</Title>
         <Title level={3} className='home-title'><Link to='/news'>Show more</Link></Title>
       </div>
       <News simplified={true} />

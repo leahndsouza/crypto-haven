@@ -34,8 +34,6 @@ const Cryptocurrencies = (props) => {
     setCoins(filteredData);
   }, [coinSearch]) 
 
-  console.log('cal',coinSearch);
-
   if(isFetching===true) {
     return 'Loading...';
   }

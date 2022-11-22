@@ -1,7 +1,6 @@
 import { secondInstance } from '../axios';
 
 export function getNews(category,count) {
-    console.log('cat',category);
     let url = `/news/search?q=${category}&safeSearch=Off&textFormat=Raw&freshness=Day&count=${count}`;
     const headers = {
         headers: {
