@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
 import moment from 'moment';
+import { useSelector } from 'react-redux';
 
 import { getNews } from '../axios/Api/newsApi';
 
@@ -11,11 +12,13 @@ const demoImage = 'https://www.financialexpress.com/wp-content/uploads/2022/04/c
 
 const News = (props) => {
   const count = props.simplified ? 6 : 20;
+  const cryptoData= useSelector( (state) =>  state.stats.data);
   const [ newsData, setNewsData ] = useState([]);
+  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const [ isFetching, setIsFetching ] = useState(true);
 
   useEffect(() => {
-    getNews( 'Cryptocurrency', count)
+    getNews( newsCategory, count)
     .then((res) => {
       setIsFetching(false);
       setNewsData(res?.data?.value)
@@ -23,17 +26,43 @@ const News = (props) => {
     .catch((error) =>{
       console.log(error);
     })
-  }, []);
+  }, [count]);
   
   console.log(newsData);
 
   if(isFetching===true) {
-    return 'Loading...';
+    return (
+      <div className="spinner-wrapper">
+      <div className="spinner">
+        <div className="sk-folding-cube">
+        <div className="sk-cube1 sk-cube"></div>
+        <div className="sk-cube2 sk-cube"></div>
+        <div className="sk-cube4 sk-cube"></div>
+        <div className="sk-cube3 sk-cube"></div>
+        </div>
+      </div>
+      </div>
+    );
   }
   else{
 
     return (
       <Row gutter={[24,24]}>
+        {props.simplified ? null : 
+          <Col span={24}>
+            <Select 
+              showSearch
+              className='select-news'
+              placeholder='Select Crypto Category'
+              optionFilterProp='children'
+              onChange={(value) => console.log(value) }
+              filterOption={(input,option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} 
+            >
+              <Option value="Cryptocurrency">Cryptocurrency</Option>
+
+            </Select>
+          </Col>
+        }
         {newsData?.map((data, inx) => (
           <Col xs={24} sm={12} lg={8} key={inx}>
             <Card hoverable className='news-card'>

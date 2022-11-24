@@ -152,6 +152,10 @@
     margin-left: 10px;
 }
 
+.select-news{
+    /* float: right;     */
+}
+
 @media screen and (max-width:1300px){
     .main{
         margin-left: 80px;
@@ -165,7 +169,7 @@
 
 @media screen and (max-width:1700px){
     .main{
-        margin-left: 15px;
+        margin-left: 12px;
         flex: 0.8;
     }
 

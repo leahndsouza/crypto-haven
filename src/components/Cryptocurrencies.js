@@ -22,7 +22,7 @@ const Cryptocurrencies = (props) => {
     .catch((error) =>{
       console.log(error);
     })
-  }, []);
+  }, [count]);
 
   useEffect(() => {
     searchFilter();
@@ -36,13 +36,13 @@ const Cryptocurrencies = (props) => {
 
   if(isFetching===true) {
     return (
-      <div class="spinner-wrapper">
-      <div class="spinner">
-        <div class="sk-folding-cube">
-        <div class="sk-cube1 sk-cube"></div>
-        <div class="sk-cube2 sk-cube"></div>
-        <div class="sk-cube4 sk-cube"></div>
-        <div class="sk-cube3 sk-cube"></div>
+      <div className="spinner-wrapper">
+      <div className="spinner">
+        <div className="sk-folding-cube">
+        <div className="sk-cube1 sk-cube"></div>
+        <div className="sk-cube2 sk-cube"></div>
+        <div className="sk-cube4 sk-cube"></div>
+        <div className="sk-cube3 sk-cube"></div>
         </div>
       </div>
       </div>
@@ -62,7 +62,7 @@ const Cryptocurrencies = (props) => {
               <Link to={`/crypto/${item.uuid}`}>
                 <Card 
                   title={`${item.rank}. ${item.name} (${item.symbol})`}
-                  extra={<img className='crypto-image' src={item.iconUrl} />}
+                  extra={<img className='crypto-image' src={item.iconUrl} alt='crypto coin' />}
                   hoverable
                 >
                   <p>Price: ${millify(item.price)}</p>  

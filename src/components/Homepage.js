@@ -3,13 +3,16 @@ import millify from "millify";
 import { Link } from 'react-router-dom';
 import { Typography, Row, Col, Statistic } from 'antd';
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
+import * as actionTypes from '../redux/actions/actionTypes';  
 import { getStats } from '../axios/Api/cryptoApi';
 import { Cryptocurrencies, News} from '../components';
 
 const { Title } = Typography;
 
 const Homepage = () => {
+  const dispatch = useDispatch();
   const [ data, setData] = useState([]);
 
   useEffect(() => {
@@ -17,6 +20,10 @@ const Homepage = () => {
     .then((res) => {
       console.log(res.data);
       setData(res.data.data.stats);
+      dispatch({
+        type: actionTypes.SET_CRYPTO_STATS,
+        cryptoStats: res.data
+      })
     })
     .catch((error) => {
       console.log(error);
