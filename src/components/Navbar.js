@@ -17,23 +17,23 @@ const Navbar = () => {
     <div className="nav-container">
       <div className="logo-container">
         <Avatar src={icon} size="large" className="logo" />
-        <Typography.Title level={2} style={{marginLeft: '10px', paddingTop: '10px'}}>
-          <NavLink to="/">CryptoHaven</NavLink>
+        <Typography.Title level={1} style={{marginLeft: '10px', paddingTop: '15px'}} >
+          <NavLink to="/" className='header-font-color' >CryptoHaven</NavLink>
         </Typography.Title>
       </div>
 
-      <Menu theme="dark">
-        <Menu.Item icon={<HomeOutlined />}>
-          <NavLink to="/">Home</NavLink>
+      <Menu theme="dark" className="menu-style">
+        <Menu.Item icon={<HomeOutlined />} className='header-font' >
+          <NavLink to="/" className='header-font' >Home</NavLink>
         </Menu.Item>
-        <Menu.Item icon={<FundOutlined />}>
-          <NavLink to="/cryptocurrencies">Cryptocurrencies</NavLink>
+        <Menu.Item icon={<FundOutlined />} className='header-font' >
+          <NavLink to="/cryptocurrencies" className='header-font' >Cryptocurrencies</NavLink>
         </Menu.Item>
-        <Menu.Item icon={<MoneyCollectOutlined />}>
-          <NavLink to="/exchanges">Exchanges</NavLink>
+        <Menu.Item icon={<MoneyCollectOutlined />} className='header-font' >
+          <NavLink to="/exchanges" className='header-font' >Exchanges</NavLink>
         </Menu.Item>
-        <Menu.Item icon={<BulbOutlined />}>
-          <NavLink to="/news">News</NavLink>
+        <Menu.Item icon={<BulbOutlined />} className='header-font' >
+          <NavLink to="/news" className='header-font' >News</NavLink>
         </Menu.Item>
       </Menu>
     </div>
