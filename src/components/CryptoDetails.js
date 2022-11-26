@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Col, Row, Typography, Select } from 'antd';
+import { Col, Row, Typography, Select, Tag } from 'antd';
 import {
   DollarCircleOutlined,
   ExclamationCircleOutlined,
@@ -10,6 +10,9 @@ import {
   MoneyCollectOutlined,
   StopOutlined,
   TrophyOutlined,
+  ThunderboltOutlined,
+  NumberOutlined,
+  CheckOutlined
 } from "@ant-design/icons";
 
 import { getCoinData } from '../axios/Api/cryptoApi';
@@ -21,22 +24,82 @@ const CryptoDetails = () => {
   const params = useParams();
   const [ coinData, setCoinData ] = useState([null]);
   const [ timePeriod, setTimePeriod ] = useState('7d');
+  const [ isFetching, setIsFetching ] = useState(true);
+
+  const timeFrame = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+
+  const stats = [
+    { title: 'Price to USD', value: `$ ${coinData?.price && millify(coinData?.price)}`, icon: <DollarCircleOutlined /> },
+    { title: 'Rank', value: coinData?.rank, icon: <NumberOutlined /> },
+    { title: '24h Volume', value: `$ ${coinData?.volume && millify(coinData?.volume)}`, icon: <ThunderboltOutlined /> },
+    { title: 'Market Cap', value: `$ ${coinData?.marketCap && millify(coinData?.marketCap)}`, icon: <DollarCircleOutlined /> },
+    { title: 'All-time-high(daily avg.)', value: `$ ${coinData?.allTimeHigh?.price && millify(coinData?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
+  ];
+
+  const genericStats = [
+    { title: 'Number Of Markets', value: coinData?.numberOfMarkets, icon: <FundOutlined /> },
+    { title: 'Number Of Exchanges', value: coinData?.numberOfExchanges, icon: <MoneyCollectOutlined /> },
+    { title: 'Aprroved Supply', value: coinData?.supply?.confirmed ? <CheckOutlined /> : <StopOutlined />, icon: <ExclamationCircleOutlined /> },
+    { title: 'Total Supply', value: `$ ${coinData?.supply?.total && millify(coinData?.supply?.total)}`, icon: <ExclamationCircleOutlined /> },
+    { title: 'Circulating Supply', value: `$ ${coinData?.supply?.circulating && millify(coinData?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
+  ];
 
   useEffect(() => {
     getCoinData(params.coinId)
     .then((response) => {
-      setCoinData(response.data.coin);
+      setCoinData(response.data.data.coin);
+      setIsFetching(false);
     })
     .catch((err) => 
       console.log("Error occured", err)
     )
   }, []);
 
-  return (
-    <div>
-        CryptoDetails {params.coinId}
-    </div>
-  )
+  console.log('dat', coinData);
+
+  if(isFetching===true) {
+    return (
+      <div className="spinner-wrapper">
+      <div className="spinner">
+        <div className="sk-folding-cube">
+        <div className="sk-cube1 sk-cube"></div>
+        <div className="sk-cube2 sk-cube"></div>
+        <div className="sk-cube4 sk-cube"></div>
+        <div className="sk-cube3 sk-cube"></div>
+        </div>
+      </div>
+      </div>
+    );
+  }
+  else {
+
+    return (
+      <Col className='coin-detail-container'>
+        <Col className='coin-heading-container'>
+          <Title level={2} className="coin-name">
+            {coinData?.name} ({coinData?.symbol})
+          </Title>
+          <div>
+          <Tag className='coin-tags' closable={false}>Rank #{coinData?.rank}</Tag>
+          {coinData?.tags?.map((item) => 
+            <Tag className='coin-tags' closable={false}>{item}</Tag>
+          )}
+          </div>
+        </Col>
+        <Select 
+          className='select-timeperiod'
+          defaultValue="7d"
+          placeholder="Select Time Period"
+          onChange={(value) => setTimePeriod(value) }
+        >
+          {timeFrame?.map((frame) =>
+            <Option value={frame}>{frame}</Option>
+          )}
+
+        </Select>
+      </Col>
+    )
+  }
 }
 
 export default CryptoDetails;
