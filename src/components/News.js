@@ -26,9 +26,9 @@ const News = (props) => {
     .catch((error) =>{
       console.log(error);
     })
-  }, [count]);
+  }, [count, newsCategory]);
   
-  console.log(newsData);
+  console.log(cryptoData);
 
   if(isFetching===true) {
     return (
@@ -55,11 +55,13 @@ const News = (props) => {
               className='select-news'
               placeholder='Select Crypto Category'
               optionFilterProp='children'
-              onChange={(value) => console.log(value) }
+              onChange={(value) => setNewsCategory(value) }
               filterOption={(input,option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} 
             >
               <Option value="Cryptocurrency">Cryptocurrency</Option>
-
+              {cryptoData?.data?.coins?.map((coin) => 
+                <Option value={coin.name}>{coin.name}</Option>
+              )}
             </Select>
           </Col>
         }
