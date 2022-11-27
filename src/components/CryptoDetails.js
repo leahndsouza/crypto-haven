@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Col, Row, Typography, Select, Tag } from 'antd';
+import { Col, Row, Typography, Select, Tag, Avatar } from 'antd';
 import {
   DollarCircleOutlined,
   ExclamationCircleOutlined,
@@ -75,16 +75,30 @@ const CryptoDetails = () => {
 
     return (
       <Col className='coin-detail-container'>
-        <Col className='coin-heading-container'>
-          <Title level={2} className="coin-name">
-            {coinData?.name} ({coinData?.symbol})
-          </Title>
-          <div>
-          <Tag className='coin-tags' closable={false}>Rank #{coinData?.rank}</Tag>
-          {coinData?.tags?.map((item) => 
-            <Tag className='coin-tags' closable={false}>{item}</Tag>
-          )}
-          </div>
+        <Col className='coin-heading'>
+          <Col className='coin-heading-container'>
+            <div style={{ display: 'flex', flexDirection: 'row'}}>
+              <Title level={1} className="coin-name">
+                {coinData?.name} ({coinData?.symbol})
+              </Title>
+              <Avatar shape='circle' src={coinData?.iconUrl} size='default' style={{ marginTop: '10px', marginLeft: '5px'}} />
+            </div>
+            <div>
+            <Tag className='coin-tags' closable={false}>Rank #{coinData?.rank}</Tag>
+            {coinData?.tags?.map((item) => 
+              <Tag className='coin-tags' closable={false}>{item}</Tag>
+            )}
+            </div>
+          </Col>
+          <Col className='coin-heading-container'>
+            <span> {coinData?.name} Price ({coinData?.symbol}) in USD</span>
+            <div className='coin-price-container'>
+            <Title level={2} style={{ fontWeight: 650}} >${parseFloat(coinData?.price).toFixed(2)}</Title>
+            <Tag className='coin-change' closable={false} style={{ backgroundColor: coinData?.change>0 ? '#16c784' : "#ea3943"}} >{coinData?.change}%</Tag>
+            </div>
+            <span style={{ fontSize: '13px', opacity: 0.8 }} >All Time High: ${parseFloat(coinData?.allTimeHigh?.price).toFixed(2)}</span>
+            <span style={{ fontSize: '13px', opacity: 0.8 }} >BTC Price: {coinData?.btcPrice}</span>
+          </Col>
         </Col>
         <Select 
           className='select-timeperiod'
