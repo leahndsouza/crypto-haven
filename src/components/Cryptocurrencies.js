@@ -65,9 +65,9 @@ const Cryptocurrencies = (props) => {
                   extra={<img className='crypto-image' src={item.iconUrl} alt='crypto coin' />}
                   hoverable
                 >
-                  <p>Price: ${millify(item.price)}</p>  
-                  <p>Market Cap: {millify(item.marketCap)}</p>
-                  <p>Daily Change: {millify(item.change)}%</p>
+                  <p>Price: ${item?.price > 1 ? parseFloat(item?.price).toFixed(2) : ( item?.price <0.01 ? parseFloat(item?.price).toFixed(7) : parseFloat(item?.price).toFixed(3)) }</p>  
+                  <p>Market Cap: {millify(item?.marketCap)}</p>
+                  <p>Daily Change: {millify(item?.change)}%</p>
                 </Card>
               </Link>
             </Col>

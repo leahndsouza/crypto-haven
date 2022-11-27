@@ -93,7 +93,7 @@ const CryptoDetails = () => {
           <Col className='coin-heading-container'>
             <span> {coinData?.name} Price ({coinData?.symbol}) in USD</span>
             <div className='coin-price-container'>
-            <Title level={2} style={{ fontWeight: 650}} >${parseFloat(coinData?.price).toFixed(2)}</Title>
+            <Title level={2} style={{ fontWeight: 650}} >${coinData?.price > 1 ? parseFloat(coinData?.price).toFixed(2) : parseFloat(coinData?.price).toFixed(7) }</Title>
             <Tag className='coin-change' closable={false} style={{ backgroundColor: coinData?.change>0 ? '#16c784' : "#ea3943"}} >{coinData?.change}%</Tag>
             </div>
             <span style={{ fontSize: '13px', opacity: 0.8 }} >All Time High: ${parseFloat(coinData?.allTimeHigh?.price).toFixed(2)}</span>
