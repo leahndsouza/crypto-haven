@@ -15,7 +15,8 @@ import {
   CheckOutlined
 } from "@ant-design/icons";
 
-import { getCoinData } from '../axios/Api/cryptoApi';
+import { getCoinData, getCoinHistory } from '../axios/Api/cryptoApi';
+import LineChart from './LineChart';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -25,6 +26,7 @@ const CryptoDetails = () => {
   const [ coinData, setCoinData ] = useState([null]);
   const [ timePeriod, setTimePeriod ] = useState('7d');
   const [ isFetching, setIsFetching ] = useState(true);
+  const [ coinHistory, setCoinHistory ] = useState([]);
 
   const timeFrame = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
@@ -55,7 +57,18 @@ const CryptoDetails = () => {
     )
   }, []);
 
-  console.log('dat', coinData);
+  useEffect(() => {
+    getCoinHistory(params.coinId, timePeriod)
+    .then((response) => {
+      setCoinHistory(response.data.data);
+      setIsFetching(false);
+    })
+    .catch((err) => 
+      console.log("Error occured", err)
+    )
+  }, [timePeriod]);
+
+  console.log('dat', coinHistory);
 
   if(isFetching===true) {
     return (
@@ -111,6 +124,7 @@ const CryptoDetails = () => {
           )}
         </Select>
         {/* Coin chart */}
+        <LineChart coinHistory={coinHistory} coinName={coinData?.name} coinPrice={coinData?.price} />
         <Col className='stats-container'>
           <Col className='coin-value-statistics'>
             <Col className='coin-value-statistics-heading'>
