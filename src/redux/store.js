@@ -1,26 +1,27 @@
-// import { createStore, applyMiddleware, compose, combineReducers } from "redux";
-// import reduxReset from 'redux-reset'
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 
-// // Reducers
-
-
-// export function configureStore() {
-//   const composeEnhancers =
-//     // process.env.NODE_ENV === "development"
-//     //   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-//     //   : null 
-//     //   || 
-//     compose;
-
-//   const rootReducer = combineReducers({
-//   });
+// Reducers
+import cryptoReducer from './reducers/crypto';
 
 
-//   const store = createStore(
-//     rootReducer,
-//     composeEnhancers(reduxReset())
-//   );
+export function configureStore() {
+  const composeEnhancers =
+    // process.env.NODE_ENV === "development"
+    //   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    //   : null 
+    //   || 
+    compose;
+
+  const rootReducer = combineReducers({
+    stats: cryptoReducer,
+  });
 
 
-//   return store;
-// }
+  const store = createStore(
+    rootReducer,
+    composeEnhancers()
+  );
+
+
+  return store;
+}

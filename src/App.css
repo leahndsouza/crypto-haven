@@ -69,7 +69,8 @@
  }
 
 .routes{
-    padding: 20px;
+    padding: 20px 20px 20px 30px;
+    min-height: 100vh;
 }
 
 .footer {
@@ -83,6 +84,7 @@
 .main{
     flex: 0.8;
     width: 100%;
+    /* height: 100vh !important; */
 }
 
 .show-more{
@@ -152,36 +154,213 @@
     margin-left: 10px;
 }
 
+/* .select-news{
+    float: right;    
+} */
+
+.coin-detail-container{
+    margin: 30px;
+}
+
+.coin-heading-container{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    margin-right: 100px;
+}
+
+.coin-heading-container .coin-name{
+    font-weight: 700;
+}
+
+.coin-tags{
+    font-size: 13px !important;
+    opacity: 0.9 !important;
+}
+
+.select-timeperiod{
+    width: 200px !important;
+    margin-top: 20px !important;
+}
+
+.coin-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    /* padding-top: 20px; */
+    padding-bottom: 20px;
+    width: 100% !important;
+}
+
+.coin-price-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* width: 100% !important; */
+}
+
+.coin-change{
+    border-radius: 10px !important;
+    padding:  4px 6px 4px 6px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    margin: auto auto 20px 10px !important;
+}
+
+.coin-value-statistics-heading p{
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.coin-details-heading{
+    font-weight: 700 !important;
+    margin-top: 20px !important;
+    font-size: 28px !important;
+    margin-bottom: 7px !important;
+    /* color: var(--pink) !important; */
+}
+
+.coin-stats{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    opacity: 0.9;
+    padding: 20px;
+
+}
+
+.coin-stats-name{
+    display: flex;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.stats{
+    font-weight: 800;
+}
+
+.stats-container{
+    display: flex;
+    /* flex: 1 1 auto; */
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.coin-value-statistics{
+    flex: 0.45;
+}
+
+.other-stats-info{
+    flex: 0.45;
+}
+
+/* .stats-container h2{
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-top: 20px;
+    color: var(--pink);
+} */
+
+
+.coin-desc-link{
+    display: flex;
+    gap: 40px;
+    /* margin-top: 40px; */
+    padding-top: 20px;
+}
+
+.coin-desc-link h3{
+    font-weight: 700;
+    color: var(--pink);
+}
+
+.coin-desc-link p{
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.coin-desc-link p:first-child{
+    margin-top: 10px;
+}
+
+.coin-desc-link a{
+    color: var(--pink);
+}
+
+.coin-desc-link h3{
+    font-weight: 700;
+}
+
+.coin-desc{
+    flex: 0.5;
+}
+
+.coin-links{
+    padding: 0px 20px;
+      flex: 0.5;
+  }
+  
+  .coin-link{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+  }
+  
+  .link-name{
+      text-transform: capitalize;
+      font-size: 1rem;
+  }
+  
+  .coin-link a{
+      color: var(--pink);
+      font-weight: 700;
+      font-size: 1rem;
+  }
+  
+  .coin-link:hover, .coin-stats:hover{
+      background-color: var(--bgSecondary);
+  }
+  
+
 @media screen and (max-width:1300px){
     .main{
-        /* margin-left: 50px; */
-        flex: 0.7;
+        margin-left: 80px;
+        flex: 0.8;
     }
 
     .navbar {
-        flex: 0.3;
+        flex: 0.2;
     }
 }
 
 @media screen and (max-width:1700px){
     .main{
-        flex: 0.7;
+        margin-left: 12px;
+        flex: 0.8;
     }
 
     .navbar {
-        flex: 0.3;
+        flex: 0.2;
     }
 }
 
-/* @media screen and (max-width:1170px){
+@media screen and (max-width:1170px){
     .main{
-        margin-left: 8px;
+        margin-left: 100px;
     }
-} */
+}
 
-@media screen and (max-width:1020px){
+@media screen and (max-width:1080px){
     .main{
-        /* padding-left: 50px; */
+        padding-left: 30px;
 
     }
 }
@@ -371,3 +550,5 @@
      opacity: 0;
     }
    }
+
+   /* Loader */
