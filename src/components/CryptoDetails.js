@@ -28,21 +28,21 @@ const CryptoDetails = () => {
   const [ isFetching, setIsFetching ] = useState(true);
   const [ coinHistory, setCoinHistory ] = useState([]);
 
-  const timeFrame = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+  const timeFrame = ['3h', '24h', '7d', '30d','3m', '1y', '3y', '5y'];
 
   const stats = [
-    { title: 'Price to USD', value: `$ ${coinData?.price && parseFloat(coinData?.price).toFixed(7)}`, icon: <DollarCircleOutlined /> },
+    { title: 'Price to USD', value: `$${coinData?.price && parseFloat(coinData?.price).toFixed(7)}`, icon: <DollarCircleOutlined /> },
     { title: 'Rank', value: coinData?.rank, icon: <NumberOutlined /> },
-    { title: '24h Volume', value: `$ ${coinData?.["24hVolume"] && millify(coinData?.["24hVolume"])}`, icon: <ThunderboltOutlined /> },
-    { title: 'Market Cap', value: `$ ${coinData?.marketCap && millify(coinData?.marketCap)}`, icon: <DollarCircleOutlined /> },
-    { title: 'All-time-high(daily avg.)', value: `$ ${coinData?.allTimeHigh?.price && millify(coinData?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
+    { title: '24h Volume', value: `$${coinData?.["24hVolume"] && millify(coinData?.["24hVolume"])}`, icon: <ThunderboltOutlined /> },
+    { title: 'Market Cap', value: `$${coinData?.marketCap && millify(coinData?.marketCap)}`, icon: <DollarCircleOutlined /> },
+    { title: 'All-time-high(daily avg.)', value: `$${coinData?.allTimeHigh?.price && millify(coinData?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
   ];
 
   const genericStats = [
     { title: 'Number Of Markets', value: coinData?.numberOfMarkets, icon: <FundOutlined /> },
     { title: 'Number Of Exchanges', value: coinData?.numberOfExchanges, icon: <MoneyCollectOutlined /> },
     { title: 'Approved Supply', value: coinData?.supply?.max ? millify(coinData?.supply?.max) : '--', icon: <ExclamationCircleOutlined /> },
-    { title: 'Total Supply', value: `${coinData?.supply?.total && millify(coinData?.supply?.total)}`, icon: <ExclamationCircleOutlined /> },
+    { title: 'Total Supply', value: `${coinData?.supply?.total ? millify(coinData?.supply?.total) : '--'}`, icon: <ExclamationCircleOutlined /> },
     { title: 'Circulating Supply', value: `${coinData?.supply?.circulating && millify(coinData?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
   ];
 
