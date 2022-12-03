@@ -16,6 +16,7 @@ const Homepage = () => {
   const [ data, setData] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0,0);
     getStats()
     .then((res) => {
       console.log(res.data);

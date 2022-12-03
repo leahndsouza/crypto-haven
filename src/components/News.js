@@ -18,6 +18,7 @@ const News = (props) => {
   const [ isFetching, setIsFetching ] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0,0);
     getNews( newsCategory, count)
     .then((res) => {
       setIsFetching(false);

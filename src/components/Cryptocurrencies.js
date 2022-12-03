@@ -13,6 +13,7 @@ const Cryptocurrencies = (props) => {
   const [ coinSearch, setCoinSearch] = useState('');
 
   useEffect(() => {
+    window.scrollTo(0,0);
     getStats(count)
     .then((res) => {
       setCoinData(res?.data);

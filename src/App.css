@@ -154,9 +154,10 @@
     margin-left: 10px;
 }
 
-/* .select-news{
-    float: right;    
-} */
+.select-news{
+    /* float: right;     */
+    max-width: 250px;
+}
 
 .coin-detail-container{
     margin: 30px;

@@ -47,6 +47,7 @@ const CryptoDetails = () => {
   ];
 
   useEffect(() => {
+    window.scrollTo(0,0);
     getCoinData(params.coinId)
     .then((response) => {
       setCoinData(response.data.data.coin);
